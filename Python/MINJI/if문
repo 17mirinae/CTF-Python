@@ -1,0 +1,55 @@
+1단계-No.1330-두 수 비교하기
+a, b = map(int, input().split())
+if a > b:
+    print('>')
+elif a == b:
+    print('==')
+elif a < b:
+    print('<')
+
+2단계-No.9498-시험 성적
+score = int(input())
+if score <= 100 and score > 89:
+    print('A')
+elif score < 90 and score > 79:
+    print('B')
+elif score < 80 and score > 69:
+    print('C')
+elif score < 70 and score > 59:
+    print('D')
+else:
+    print('F')
+
+3단계-No.2753-윤년
+year = int(input())
+if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
+    print('1')
+else:
+    print('0')
+
+4단계-No.5543-상근날드
+high = int(input())
+middle = int(input())
+low = int(input())
+coke = int(input())
+soda = int(input())
+
+if high <= middle:
+    burger = high
+else:
+    burger = middle
+
+if burger > low:
+    burger = low
+
+if coke < soda:
+    drink = coke
+else:
+    drink = soda
+
+print(burger + drink - 50)
+
+5단계-No.10817-세 수
+list = list(map(int, input().split()))
+list.sort(reverse=True)
+print(list[1])
