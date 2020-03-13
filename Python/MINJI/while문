@@ -1,0 +1,33 @@
+1단계-No.10952-A+B-5
+while True:
+    a, b = map(int, input().split())
+    if a == 0 and b == 0:
+        break
+    else:
+        print(a + b)
+
+2단계-No.10951-A+B-4
+import sys
+
+while True:
+    line = sys.stdin.readline().rstrip("\n")
+    if not line:
+        break
+    else:
+        a, b = map(int, line.split())
+        print(a + b)
+
+3단계-No.1110-더하기 사이클
+number = 0
+final = num = int(input())
+
+while True:    
+    temp = num // 10 + num % 10
+    rst = (num % 10) * 10 + temp % 10
+    number = number + 1
+    num = rst
+
+    if rst == final:
+        break
+
+print(number)
