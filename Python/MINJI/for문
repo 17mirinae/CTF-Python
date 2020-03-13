@@ -1,0 +1,83 @@
+1단계-No.2739-구구단
+number = int(input())
+
+for num in range(1, 10):
+    print("%d * %d = %d" %(number, num, number * num))
+
+2단계-No.10950-A+B-3
+time = int(input())
+
+for num in range(time):
+    a, b = map(int, input().split())
+    print(a + b)
+
+3단계-No.8393-합
+number = int(input())
+
+sum = 0
+
+for time in range(number + 1):
+    sum = sum + time
+
+print(sum)
+
+4단계-No.15552-빠른 A+B
+import sys
+
+times = int(input())
+
+for line in range(times):
+    a, b = map(int, sys.stdin.readline().split())
+    print(a + b)
+
+5단계-No.2741-N 찍기
+number = int(input())
+
+for i in range(1, number + 1):
+    print(i)
+
+6단계-No.2742-기찍 N
+number = int(input())
+
+for i in range(number, 0, -1):
+    print(i)
+
+7단계-No.11021-A+B-7
+import sys
+
+times = int(input())
+
+for i in range(1, times + 1):
+    a, b = map(int, sys.stdin.readline().split())
+    print("Case #%d: %d" %(i, a + b))
+
+8단계-No.11022-A+B-8
+import sys
+
+times = int(input())
+
+for i in range(1, times + 1):
+    a, b = map(int, sys.stdin.readline().split())
+    print("Case #%d: %d + %d = %d" %(i, a, b, a + b))
+
+9단계-No.2438-별 찍기-1
+number = int(input())
+
+for i in range(1, number + 1):
+    print("*" * i)
+
+10단계-No.2439-별 찍기-2
+number = int(input())
+
+for i in range(1, number + 1):
+    print(" " * (number - i) + "*" * i)
+
+11단계-No.10871-X보다 작은 수
+import sys
+
+arr, number = map(int, input().split())
+arrList = list(map(int, input().split()))
+
+for i in range(arr):
+      if arrList[i] < number:
+            print(arrList[i], end = " ")
