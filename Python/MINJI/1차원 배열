@@ -1,0 +1,89 @@
+1단계-No.10818-최소, 최대
+num = int(input())
+
+arrList = list(map(int, input().split()))
+
+print(min(arrList), max(arrList))
+
+2단계-No.2562-최댓값
+arrList = []
+
+for i in range(9):
+    arrList.append(int(input()))
+
+print(max(arrList))
+print(arrList.index(max(arrList)) + 1)
+
+3단계-No.2577-숫자의 개수
+A = int(input())
+B = int(input())
+C = int(input())
+
+arrList = list(str(A * B * C))
+
+for i in range(10):
+    print(arrList.count(str(i)))
+
+4단계-No.3052-나머지
+arrList = [] # 나머지를 모아놓은 리스트
+arr = [] # 입력받은 10개의 정수
+
+for num in range(10):
+    arr.append(int(input()))
+
+for num in arr:
+    if num % 42 not in arrList:
+        arrList.append(num % 42)
+
+print(len(arrList))
+
+5단계-No.1546-평균
+num = int(input()) # 시험을 본 과목의 수
+
+scoreList = list(map(int, input().split())) # 시험 점수
+maxScore = max(scoreList) # 최고 시험 점수
+
+for i in range(len(scoreList)):
+    scoreList[i] = scoreList[i] / maxScore * 100
+
+aveScore = sum(scoreList, 0.0) / len(scoreList)
+print(aveScore)
+
+6단계-No.8958-OX퀴즈
+num = int(input()) # 테스트 케이스의 개수
+
+addScore = 1
+score = 0
+
+for i in range(num):
+    strList = input()
+    for j in range(len(strList)):
+        if strList[j] == 'X':
+            score += 0
+            addScore = 1
+        elif strList[j] == 'O':
+            score += addScore
+            addScore += 1
+    print(score)
+    score = 0
+    addScore = 1
+
+7단계-No.4344-평균은 넘겠지
+import sys
+
+num = int(input()) # 테스트 케이스의 개수
+
+for i in range(num):
+    count = 0 # 평균보다 높은 점수를 받은 학생의 수
+    stuList = list(map(int, sys.stdin.readline().split())) # 한 줄 입력
+
+    numOfStu = stuList[0]
+    del(stuList[0]) # 학생 수
+
+    aveScore = sum(stuList, 0.0) / len(stuList) # 해당 줄의 평균
+
+    for j in range(len(stuList)):
+        if stuList[j] > aveScore:
+            count += 1
+
+    print("%.3f%%" %round((count / numOfStu) * 100, 3))
