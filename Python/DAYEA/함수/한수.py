@@ -16,6 +16,7 @@ def arith(n):
 
 N = int(input())
 cnt = 0
+# range는 마지막 수는 포함하지 않으므로 N+1을 마지막 수로 
 for i in range(1, N+1):
     # boolen타입을 int타입과 연산하면, True일 경우는 1이고 False일 경우는 0이다.
     cnt += arith(i)
