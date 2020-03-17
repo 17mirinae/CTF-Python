@@ -1,0 +1,39 @@
+1단계-No.15596-정수 N개의 합
+def solve(a):
+    ans = sum(a)
+    return ans
+
+2단계-No.4673-셀프 넘버
+def solve(n): # 함수 정의
+    ans = 0 # 모든 자릿수의 합
+    for i in list(str(n)):
+        ans += int(i)
+    return n + ans
+
+arrList = []
+
+for k in range(1, 10001):
+    temp = solve(k)
+    arrList.append(temp)
+
+arrList.sort()
+
+for j in range(1, 10001):
+    if j not in arrList:
+        print(j)
+
+3단계-No.1065-한수
+def solve(num):
+    res = 0
+
+    for i in range(1, num + 1):
+        if i < 100:
+            res += 1
+        else:
+            numList = list(map(int, str(i)))
+            if numList[0] - numList[1] == numList[1] - numList[2]:
+                res += 1
+    return res
+
+num = int(input())
+print(solve(num))
