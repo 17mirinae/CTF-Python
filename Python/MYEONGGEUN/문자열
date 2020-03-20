@@ -1,0 +1,94 @@
+a=input()
+print(ord(a))
+
+
+a=int(input())
+b=input()
+x=0
+for i in range(a):
+    x+=int(b[i])
+print(x)
+
+
+a=list(input())
+x=[-1]*26
+for i in range(len(a)):
+    if x[ord(a[i])-97]!=-1:
+        continue
+    else:
+        x[ord(a[i])-97]=i
+for c in x:
+    print(c,end=" ")
+    
+    
+a=int(input())
+for i in range(a):
+    x,y=map(str,input().split())
+    for j in range(len(y)):
+        for k in range(int(x)):
+            print(y[j],end='')
+    print()
+    
+    
+a=input().upper()
+x=[0]*26
+for i in range(len(a)):
+    x[ord(a[i])-65]+=1
+b=0
+for i in range(26):
+    if b<x[i]:
+        b=x[i]
+        c=i
+y=x
+y.sort(reverse=True)
+if y[0]==y[1]:
+    print('?')
+else:
+    print(chr(c+65))
+    
+    
+a=input()
+x=1
+for s in a:
+    if s==' ':
+        x+=1
+print(x)
+
+
+a,b=map(str,input()[::-1].split())
+if int(a)>int(b):
+    print(a)
+else:
+    print(b)
+    
+    
+a=input()
+x=[]
+for i in range(3,11):
+    if i==8 or i==10:
+        for j in range(4):
+            x.append(i)
+    else:
+        for j in range(3):
+            x.append(i)
+b=0
+for c in a:
+    b+=x[ord(c)-65]
+print(b)
+
+
+a=['c=','c-','dz=','d-','lj','nj','s=','z=']
+x=input()
+for c in a:
+    x=x.replace(c,'1')  #replace('바뀔문자','바꿀문자')
+print(len(x))
+
+
+a=int(input())
+for i in range(a):
+    b=input()
+    for j in range(1,len(b)):
+        if b.index(b[j])<b.index(b[j-1]):
+            a-=1
+            break
+print(a)
