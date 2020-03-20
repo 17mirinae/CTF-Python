@@ -15,3 +15,4 @@ for b in range(1, 10001):
         print(b)
 
 # https://claude-u.tistory.com/33
+# 여집합
