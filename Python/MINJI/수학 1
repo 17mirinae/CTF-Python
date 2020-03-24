@@ -1,0 +1,111 @@
+1단계-No.1712-손익분기점
+a, b, c = map(int, input().split())
+
+if c <= b:
+    print("-1")
+else:
+    print(a // (c - b) + 1)
+
+2단계-No.2839-설탕 배달
+num = int(input())
+
+count = 0
+
+while num > 0:
+    if num % 5 != 0: # 5로 안 나뉨
+        num -= 3
+        if num < 0:
+            count = -1
+            break
+        count += 1
+    elif num % 5 == 0:
+        num -= 5
+        count += 1
+    elif num % 5 != 0 and num % 3 != 0:
+        count = -1
+
+print(count)
+
+3단계-No.2292-벌집
+final = int(input())
+count = 1 # 거쳐가는 방의 수
+room = 1 # 현재 방의 숫자
+gap = 6 # 등차수열의 차이
+
+if final == 1:
+    print("1")
+else:
+    while True:
+        room += gap
+        gap += 6
+        count += 1
+        if final <= room:
+            print(count)
+            break
+
+4단계-No.1193-분수찾기
+final = int(input())
+
+line = 1
+
+while final > line:
+    final -= line
+    line += 1
+
+if line % 2 == 0:
+    a = final
+    b = line - final + 1
+else:
+    a = line - final + 1
+    b = final
+
+print(a, '/', b, sep = '')
+
+5단계-No.2869-달팽이는 올라가고 싶다
+day, night, length = map(int, input().split())
+
+print((length - night - 1) // (day - night) + 1)
+
+6단계-No.10250-ACM 호텔 (참고)
+finalRoom = int(input())
+
+for i in range(finalRoom):
+    height, many, num = map(int, input().split())
+    dis = num // height + 1
+    floor = num % height
+    if floor == 0:
+        dis -= 1
+        floor = height
+    print(floor * 100 + dis)
+
+7단계-No.2775-부녀회장이 될테야 (참고)
+num = int(input())
+
+for i in range(num):
+    a = int(input())
+    b = int(input())
+    arr = [j for j in range(1, b + 1)]
+    for i in range(a):
+        for j in range(b - 1):
+            arr[j + 1] += arr[j]
+    print(arr[-1])
+
+8단계-No.1011-Fly me to the Alpha Centauri (참고)
+case_num = int(input())
+ans = []
+for i in range(case_num):
+    a, b = map(int, input().split())
+    num = b-a
+    k = 1
+    p = 1
+    while num > 0:
+        num -= k
+        k += 1
+        if num >= p:
+            num -= p
+            p += 1
+
+    ans.append(k+p-2)
+
+for i in ans:
+    print(i)
