@@ -103,7 +103,7 @@ for i in charArr:
 
 print(len(inputStr))
 
-10단계-No.1316-그룹 단어 체커
+10단계-No.1316-그룹 단어 체커 (참고)
 num = int(input())
 
 for i in range(num):
