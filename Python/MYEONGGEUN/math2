@@ -1,0 +1,149 @@
+1.소수찾기
+a=int(input())
+b=list(map(int,input().split()))
+x=0
+for i in b:
+    y=0
+    for j in range(1,i):
+        if i%j==0:
+            y+=1
+    if y==1:
+        x+=1
+print(x)
+
+
+2.소수
+a=int(input())
+b=int(input())
+x=[]
+for i in range(a,b+1):
+    c=0
+    for j in range(1,i+1):
+        if i%j==0:
+            c+=1
+            if c==3:
+                break
+    if c==2:
+        x.append(i)
+if len(x)==0:
+    print(-1)
+else:
+    print(sum(x))
+    print(x[0])
+
+
+3.소수구하기
+def A(n):
+    if(n<=1):
+        return False
+    i=2
+    while i*i<=n:
+        if n%i==0:
+            return False
+        i+=1
+    return True
+a,b=map(int,input().split())
+for i in range(a,b+1):
+    if(A(i)):
+        print(i)
+
+
+4.베르트랑공준
+def A(a):
+    x=[True]*a
+    b=int(a ** 0.5)
+    for i in range(2,b+1):
+        if x[i]==True:
+            for j in range(i+i,a,i):
+                x[j]=False
+    return [i for i in range(2,a) if x[i]==True]
+
+while 1:
+    a=int(input())
+    if a==0:
+        break
+    y=A(2*a+1)
+    print(len([i for i in y if i>a]))
+
+
+5.골드바흐의추측
+a=[0 for i in range(10001)]
+a[1]=1
+for i in range(2,98):
+    for j in range(i*2,10001,i):
+        a[j]=1
+b=int(input())
+for i in range(b):
+    x=int(input())
+    y=x//2
+    for j in range(y,1,-1):
+        if a[x-j]==0 and a[j]==0:
+            print(j,x-j)
+            break
+
+
+6.직사각형에서 탈출
+a,b,c,d=map(int,input().split())
+print(min(a,b,c-a,d-b))
+
+
+7.네 번째 점
+a=[]
+for _ in range(3):
+    a.append(list(map(int,input().split())))
+x=[]
+y=[]
+for [i,j] in a:
+    if i in x:
+        x.remove(i)
+    else:
+        x.append(i)
+    if j in y:
+        y.remove(j)
+    else:
+        y.append(j)
+print(x[0],y[0])
+
+
+8.직각삼각형
+while True:
+    a=list(map(int,input().split()))
+    if a[0]==0:
+        break
+    x=max(a)
+    a.remove(x)
+    y=a[0]**2+a[1]**2
+    if (x**2)==y:
+        print("right")
+    else:
+        print("wrong")
+
+
+9.택시기하학
+import math
+a=int(input())
+print(a*a*math.pi)
+print(2*a*a)
+
+
+10.터렛
+n=int(input())
+for _ in range(n):
+    a,b,c,d,e,f=map(int,input().split())
+    x=abs(d-a)
+    y=abs(e-b)
+    xy=x**2+y**2
+    z1=(c+f)**2
+    z2=(c-f)**2
+    if x+y==0:
+        if c==f:
+            print(-1)
+        else:
+            print(0)
+    else:
+        if xy==z1 or xy==z2:
+            print(1)
+        elif xy<z1 and xy>z2:
+            print(2)
+        else:
+            print(0)
