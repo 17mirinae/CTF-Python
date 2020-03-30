@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+# coding: utf-8
+
+count = 0
+log_msg = ''
+
+def logger(src, dst):
+    global count, log_msg
+    log_msg += '{0} {1}\n'.format(src, dst)
+    count += 1
+
+
+def solve(n, src, dst):
+    if n <= 1:
+        logger(src, dst)
+    else:
+        via = 6 - src - dst
+        solve(n - 1, src, via)
+        logger(src, dst)
+        solve(n - 1, via, dst)
+
+
+
+def main():
+    global count, log_msg
+    n = int(input())
+    solve(n, 1, 2)
+    print(count)
+    print(log_msg)
+
+
+if __name__ == '__main__':
+    main()
+
