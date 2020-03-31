@@ -1,0 +1,139 @@
+-재귀-
+1.팩토리얼
+def A(a):
+    if a<=1:
+        return 1
+    else:
+        return a*A(a-1)
+a=int(input())
+print(A(a))
+
+
+2.피보나치수
+def A(a):
+    if a<=1:
+        return a
+    else:
+        return A(a-1)+A(a-2)
+a=int(input())
+print(A(a))
+
+
+3.별찍기
+def A(a):
+    x=[]
+    for i in range(3*len(a)):
+        if i//len(a)==1:
+            x.append(a[i%len(a)]+" "*len(a)+a[i%len(a)])
+        else:
+            x.append(a[i%len(a)]*3)
+    return list(x)
+s=["***","* *","***"]
+a=int(input())
+x=0
+while a!=3:
+    a=int(a/3)
+    x+=1
+for i in range(x):
+    s=A(s)
+for i in s:
+    print(i)
+
+
+4.하노이탑
+def A(x,a,b,c):
+    if x==1:
+        print(a,c)
+    else:
+        A(x-1,a,c,b)
+        print(a,c)
+        A(x-1,b,a,c)
+x=int(input())
+y=0
+for i in range(x):
+    y=y*2
+    y+=1
+print(y)
+A(x,1,2,3)
+
+
+-브루트포스-
+1.블랙잭
+a,b=map(int,input().split())
+x=list(map(int,input().split()))
+n=0
+for i in range(0,len(x)-2):
+    for j in range(i+1,len(x)-1):
+        for k in range(j+1,len(x)):
+            if x[i]+x[j]+x[k]>b:
+                continue
+            else:
+                n=max(n,x[i]+x[j]+x[k])
+print(n)
+
+
+2.분해합
+a=int(input())
+b=0
+for i in range(1,a+1):
+    x=list(map(int,str(i)))
+    y=i+sum(x)
+    if y==a:
+        b=i
+        break
+print(b)
+
+
+3.덩치
+a=int(input())
+b=[]
+for _ in range(a):
+    x,y=map(int,input().split())
+    b.append((x,y))
+for i in b:
+    n=1
+    for j in b:
+        if i[0]<j[0] and i[1]<j[1]:
+            n+=1
+    print(n,end=" ")
+
+
+4.체스판다시칠하기
+a,b=map(int,input().split())
+c=[list(input())for _ in range(a)]
+n=None
+for i in range(a-7):
+    for j in range(b-7):
+        x,y=0,0
+        for k in range(i,i+8):
+            for l in range(j,j+8):
+                if (k+l-i-j)%2==0:
+                    if c[k][l]=='B':
+                        x+=1
+                else:
+                    if c[k][l]=='W':
+                        x+=1
+        for k in range(i,i+8):
+            for l in range(j,j+8):
+                if (k+l-i-j)%2==0:
+                    if c[k][l]=='W':
+                        y+=1
+                else:
+                    if c[k][l]=='B':
+                        y+=1
+        z=x if x<y else y
+        if n is None:
+            n=z
+        else:
+            n=z if n>z else n
+print(n)
+
+
+5.영화감독
+a=int(input())
+x=666
+while a:
+    if "666" in str(x):
+        a-=1
+    x+=1
+print(x-1)
