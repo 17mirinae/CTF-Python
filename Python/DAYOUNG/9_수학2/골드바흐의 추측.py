@@ -1,7 +1,7 @@
 import sys
 import math
 from itertools import product
-#combination은 중복허용X
+#combinations은 중복허용X
 
 def find_prime(n):
     limit = n
