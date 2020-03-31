@@ -16,7 +16,7 @@ if matrix[0][0] == 'W' :
             for y in range(M) :
                 if matrix[x][y] != start_W[y] :
                     paint += 1
-        elif x%2 == 1 and matrix[x] != start_B
+        elif x%2 == 1 and matrix[x] != start_B:
 else : # 시작이 'B'라면
     for x in range(N) :
         if matrix[x] != start_B :
