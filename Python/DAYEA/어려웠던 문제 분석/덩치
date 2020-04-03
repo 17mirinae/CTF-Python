@@ -1,0 +1,17 @@
+N = int(input())
+
+X = []
+Y = []
+for i in range(N):
+    x, y = map(int, input().split())
+    X.append(x)	# 몸무게
+    Y.append(y)	# 키
+
+for j in range(N):
+    cnt = 1
+    for k in range(N):
+        # 몸무게가 많이 나가지만, 키가 작은 경우는 등수가 상승하지 않는다.
+        # 따라서 그러한 경우는 동일한 등수가 되므로 두가지 모두 우월한 경우만 등수를 상승시킨다.
+        if X[j] < X[k] and Y[j] < Y[k]:
+            cnt += 1
+    print(cnt, end=" ")
