@@ -1,0 +1,110 @@
+1.수 정렬하기
+a=int(input())
+b=list()
+for _ in range(a):
+    b.append(int(input()))
+b.sort()
+for i in b:
+    print(i)
+
+
+2.수 정렬하기2
+import sys
+a=int(input())
+x=[]
+for _ in range(a):
+    x.append(int(sys.stdin.readline()))
+for i in sorted(x):
+    sys.stdout.write(str(i)+'\n')
+
+
+3.수 정렬하기3
+import sys
+a=int(input())
+x=[0]*10001
+for i in range(a):
+    x[int(input())]+=1
+for i in range(10001):
+    sys.stdout.write('%s\n'%i*x[i])
+
+
+4.통계학
+import sys
+from collections import Counter
+a=int(sys.stdin.readline())
+x=[]
+s=0
+for i in range(a):
+    t=int(sys.stdin.readline())
+    x.append(t)
+    s+=t
+print('%.0f'%(s/a))
+if a==1:
+    print(x[0])
+    print(x[0])
+    print(0)
+    sys.exit()
+x=sorted(x)
+print(x[a//2])
+c=Counter(x)
+c=sorted(c.items(),key=lambda x:(-x[1],x[0]))
+if c[0][1]==c[1][1]:
+    print(c[1][0])
+else:
+    print(c[0][0])
+print(x[-1]-x[0])
+
+
+5.소트인사이드
+a=input()
+a=[int(x) for x in a]
+b=sorted(a,reverse=True)
+for i in b:
+    print(i,end='')
+
+
+6.좌표 정렬하기
+import sys
+a=int(sys.stdin.readline())
+x=[]
+for i in range(a):
+    x.append(list(map(int,sys.stdin.readline().split())))
+x.sort(key=lambda x:(x[0],x[1]))
+for i in x:
+    print(i[0],i[1])
+
+
+7.좌표 정렬하기2
+import sys
+a=int(sys.stdin.readline())
+x=[]
+for i in range(a):
+    x.append(list(map(int,sys.stdin.readline().split())))
+x.sort(key=lambda x:(x[1],x[0]))
+for i in x:
+    print(i[0],i[1])
+
+
+8.단어 정렬
+a=int(input())
+b=[]
+for _ in range(a):
+    x=str(input())
+    c=len(x)
+    b.append((x,c))
+b=list(set(b))
+b.sort(key=lambda x:(x[1],x[0]))
+for x in b:
+    print(x[0])
+
+
+9.나이순 정렬
+a=int(input())
+b=[]
+for _ in range(a):
+    x,y=map(str,input().split())
+    x=int(x)
+    b.append((x,y))
+b.sort(key=lambda x:(x[0]))
+for i in b:
+    print(i[0],i[1])
