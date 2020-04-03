@@ -12,7 +12,7 @@ print(s)
 m = statistics.median(L)
 print(m)
 # 최빈값 : N개의 수들 중 가장 많이 나타나는 값
-c = Counter(L).most_common(1)
+c = Counter(L).most_common()
 print(c[0][0])
 # 범위 : N개의 수들 중 최댓값과 최솟값의 차이
 print(max(L)-min(L))
