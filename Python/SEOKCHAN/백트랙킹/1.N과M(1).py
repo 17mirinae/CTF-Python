@@ -1,41 +1,19 @@
-#!/usr/bin/env python3
-# coding: utf-8
+def f(n,m,k):
+    if(n == k):
+        print(*res)
+        return
+    else:
+        for i in range(m):
+            if(visited[i] == 0):
+                visited[i] = 1
+                res[n] = arr[i]
+                print(res)
+                f(n+1,m,k)
+                visited[i] = 0
 
-def solve(n, m):
-    result = []
+n, m = map(int, input().split())
 
-    if m == 1:
-        for i in range(1, n + 1):
-            result.append([i])
-        return result
-
-    while True:
-        i = 1
-        x = [ 1 ] * m
-        while x[-m] < n:
-            x[-i] += (x[-i] + 1) % n + 1
-
-            # 중복되는 수가 있는 경우 continue
-            if len(x) != len(set(x)):
-                continue
-
-            if x[-i] == 1:
-                x[-(i + 1)] += 1
-
-
-
-
-    return result
-
-
-def main():
-    n, m = map(int, input().split())
-    for s in solve(n, m):
-        for i in s:
-            print(i, end=' ')
-        print()
-
-
-if __name__ == '__main__':
-    main()
-
+arr = range(1,n+1)
+res = [0] * m
+visited = [0 for i in range(n)]
+f(0,n,m)
