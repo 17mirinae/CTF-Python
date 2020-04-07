@@ -1,0 +1,133 @@
+1단계-No.2750-수 정렬하기
+num = int(input())
+numArr = []
+
+for i in range(num):
+    numArr.append(int(input()))
+
+numArr.sort()
+
+for i in numArr:
+    print(i)
+
+2단계-No.2751-수 정렬하기-2
+# Pypy3로 제출
+num = int(input())
+numArr = []
+
+for i in range(num):
+    numArr.append(int(input()))
+
+numArr.sort()
+
+for i in numArr:
+    print(i)
+
+3단계-No.10989-수 정렬하기-3
+import sys
+
+num = int(input())
+result = [0 for i in range(10001)]
+
+for num in sys.stdin:
+    result[int(num)] += 1
+
+for i in range(10001):
+    if result[i] > 0:
+        for j in range(result[i]):
+            print(i)
+
+4단계-No.2108-통계학 (참고)
+import sys
+from collections import Counter
+  
+t = int(sys.stdin.readline())
+num_list = []
+for _ in range(t):
+    num_list.append(int(sys.stdin.readline())) 
+
+def mode(x):
+    mode_dict = Counter(x)
+    modes = mode_dict.most_common()
+    if len(x) > 1 : 
+        if modes[0][1] == modes[1][1]:
+            mod = modes[1][0]
+        else : 
+            mod = modes[0][0]
+    else : 
+        mod = modes[0][0]
+    
+    return mod
+
+print(round(sum(num_list) / len(num_list)))
+num_list.sort()
+print(num_list[len(num_list) // 2])
+print(mode(num_list))
+print(num_list[-1] - num_list[0])
+
+5단계-No.1427-소트인사이드
+numList = list(str(input()))
+numList.sort(reverse = True)
+result = ""
+
+for i in numList:
+    result += i
+
+print(result)
+
+6단계-No.11650-좌표 정렬하기 (참고)
+import sys
+
+num = int(sys.stdin.readline())
+numList = []
+
+for i in range(num):
+    numList.append(list(map(int, sys.stdin.readline().split())))
+
+numList.sort(key = lambda x: (x[0], x[1]))
+
+for i in numList:
+    print(i[0], i[1])
+
+7단계-No.11651-좌표 정렬하기-2 (참고)
+import sys
+n = int(sys.stdin.readline())
+so = []
+for i in range(n):
+    so.append(list(map(int, sys.stdin.readline().split())))
+so.sort(key=lambda x: (x[1], x[0]))
+for i in so:
+    print(i[0], i[1])
+
+8단계-No.1181-단어 정렬 (참고)
+words_num = int(input())
+words_list = []
+
+for _ in range(words_num):
+    word = str(input())
+    word_count = len(word)
+    words_list.append((word, word_count))
+
+#중복 삭제
+words_list = list(set(words_list))
+
+#단어 숫자 정렬 > 단어 알파벳 정렬
+words_list.sort(key = lambda word: (word[1], word[0]))
+
+for word in words_list:
+    print(word[0])
+
+9단계-No.10814-나이순 정렬 (참고)
+num = int(input())
+peoList = []
+
+for i in range(num):
+    age, name = map(str, input().split())
+    age = int(age)
+    peoList.append((age, name))
+
+# 나이 숫자 정렬 > 가입순 정렬
+peoList.sort(key = lambda member: (member[0]))
+
+for member in peoList:
+    print(member[0], member[1])
