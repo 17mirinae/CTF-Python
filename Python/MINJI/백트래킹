@@ -81,6 +81,7 @@ res = [0] * m
 f(0,n,m,0)
 
 5단계-No.9663-N-Queen (PyPy3로 제출)
+#내 윗줄에 나와 겹치는 라인에 퀸이 있는가?
 def adjacent(x):
     for i in range(x):
         if row[x] == row[i] or abs(row[x] - row[i]) == x - i:
