@@ -1,39 +1,53 @@
 #https://dojinkimm.github.io/problem_solving/2019/10/16/boj-2580-sudoku.html
-blank=[]
-for _ in range(9):
-    blank.append(list(map(int, input().split())))
+import sys
+r = sys.stdin.readline
 
-# for i in range(9):
-#     print(blank[i])
+# 가로 체크
+def horizontal(x, val):
+    #val 값이 sudoku의 x행의 요소 중 한면 false
+    if val in sudoku[x]:
+        return False
+    return True
 
-zero_cnt = 0
-for num in blank:
+# 세로 체크
+def vertical(y, val):
     for i in range(9):
-        if num[i] == 0:
-            zero_cnt += 1
+        if val == sudoku[i][y]:
+            return False
+    return True
 
-def zero_count(a, b):
-    zero = 0
-    if b == 0: #행
-        for i in range(9):
-            if blank[a][i] == 0:
-                zero += 1
-    else: #열
-        for i in range(9):
-            if blank[i][b] == 0:
-                zero += 1
-    return zero
+# 3x3 체크
+def bythree(x, y, val):
+    nx = x//3 * 3
+    ny = y//3 * 3
+    #3x3 첫번째 요소 위치 특정하기
 
-def find_num(a, b):
-    if b==0:
-        return 45 - sum(blank[a])
+    for i in range(3):
+        for j in range(3):
+            if val == sudoku[nx+i][ny+j]:
+                return False
+    return True
+
+
+def DFS(index):
+    if index == len(zeros):
+        for row in sudoku:
+            for n in row:
+                print(n, end=" ")
+            print()
+        sys.exit(0)
     else:
-        tmp =0
-        for i in range(9):
-            tmp += blank[i][b]
-        return 45 -tmp
+        for i in range(1, 10):
+            nx = zeros[index][0] #행
+            ny = zeros[index][1] #열
 
-def write_line(a, b):
-    if zero_count(a, b) == 1:
-        find_num(a, b)
+            # 세로, 가로, 3x3에 내가 대체하려고하는 숫자가 존재하는지 확인
+            if horizontal(nx, i) and vertical(ny, i) and bythree(nx, ny, i):
+                sudoku[nx][ny] = i
+                DFS(index+1) #다음 zero 처리하기
+                sudoku[nx][ny] = 0
 
+
+sudoku = [list(map(int, r().split())) for _ in range(9)]
+zeros = [(i, j) for i in range(9) for j in range(9) if sudoku[i][j] == 0]
+DFS(0)
