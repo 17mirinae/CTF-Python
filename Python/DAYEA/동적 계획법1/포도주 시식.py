@@ -11,4 +11,4 @@ else:
 for i in range(2, N):
     dp[i] = max(wine[i] + wine[i - 1] + dp[i - 3], wine[i] + dp[i - 2], dp[i - 1])
 
-print(dp[N])
+print(dp[N-1])
