@@ -1,0 +1,66 @@
+1단계-No.11047-동전 0
+n, k = map(int, input().split())
+numArr = []
+count = 0
+
+for i in range(n):
+    numArr.append(int(input()))
+
+for i in range(n - 1, -1, -1):
+    if k == 0:
+        break
+    if numArr[i] > k:
+        continue
+    count += k // numArr[i]
+    k %= numArr[i]
+
+print(count)
+
+2단계-No.1931-회의실배정
+num = int(input())
+numArr = []
+
+for i in range(num):
+    numArr.append(list(map(int, input().split())))
+
+numArr = sorted(numArr, key = lambda x: [x[1], x[0]])
+
+maxMeet = 0
+startMeet = 0
+
+for i in numArr:
+    if i[0] >= startMeet:
+        startMeet = i[1]
+        maxMeet += 1
+
+print(maxMeet)
+
+3단계-No.11399-ATM
+num = int(input())
+numArr = list(map(int, input().split()))
+
+if num == 1:
+    print(numArr[0])
+else:
+    numArr.sort()
+    
+    minSum = 0
+    midSum = 0
+    
+    for i in range(num):
+        minSum += (midSum + numArr[i])
+        midSum += numArr[i]
+
+    print(minSum)
+
+4단계-No.1541-잃어버린 괄호
+arr = input().split('-')
+temp = 0
+
+for i in arr[0].split('+')
+    temp += int(i)
+for i in arr[1:]:
+    for j in i.split('+')
+        temp -= int(j)
+
+print(temp)
