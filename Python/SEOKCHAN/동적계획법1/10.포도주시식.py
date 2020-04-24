@@ -8,6 +8,7 @@ def solve(wines):
 
     for i in range(3, n + 1):
         dp[i] = max(dp[i-3] + wines[i-1] + wines[i], dp[i-2] + wines[i], dp[i-1])
+        print(i, dp[i])
 
     return dp[n]
 
