@@ -1,0 +1,78 @@
+1단계-No.5086-배수와 약수
+while(True):
+    n, k = map(int, input().split())
+    if n == 0 and k == 0:
+        break
+    if n > k: # 앞 > 뒤
+        if n % k == 0:
+            print('multiple')
+        else:
+            print('neither')
+    elif n < k:
+        if k % n == 0:
+            print('factor')
+        else:
+            print('neither')
+
+2단계-No.1037-약수
+num = int(input())
+numArr = list(map(int, input().split()))
+
+numArr.sort()
+
+print(numArr[-1] * numArr[0])
+
+3단계-No.11653-소인수분해
+num = int(input())
+numArr = []
+
+for i in range(2, num + 1):
+    while num % i == 0:
+        num /= i
+        numArr.append(i)
+
+numArr.sort()
+for i in numArr:
+    print(i)
+
+4단계-No.2609-최대공약수와 최소공배수
+def gcd(a, b):
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a;
+
+a, b = map(int, input().split())
+numArr = []
+
+print(gcd(a, b)) # 최대 공약수
+print(a * b // gcd(a, b)) # 최소 공배수
+
+5단계-No.2981-검문
+import math
+
+turn = int(input())
+numArr = []
+
+for i in range(turn):
+    numArr.append(int(input()))
+
+numArr.sort()
+
+mog = numArr[-1] - numArr[0]
+divisor = [mog]
+for i in range(2, int(math.sqrt(mog)) + 1):
+    if mog % i == 0:
+        divisor.append(i)
+        divisor.append(mog // i)
+
+divisor = list(set(divisor))
+divisor.sort()
+
+for d in divisor:
+    for i in range(turn):
+        if i == turn - 1:
+            print(d, end = " ")
+        elif numArr[i] % d != numArr[i + 1] % d:
+            break
