@@ -1,0 +1,149 @@
+1단계-No.10828-스택
+class Stack:
+    def __init__(self):
+        self.container = []
+        self.count = 0
+    
+    def push(self, value):
+        self.container.append(value)
+        self.count += 1
+        
+    def pop(self):
+        if self.count == 0:
+            return -1
+        self.count -= 1
+        return self.container.pop()
+        
+    def size(self):
+        return self.count
+    
+    def empty(self):
+        if self.count == 0:
+            return 1
+        else:
+            return 0
+        
+    def top(self):
+        if self.count == 0:
+            return -1
+        return self.container[-1]
+import sys       
+stack = Stack()
+N = int(sys.stdin.readline())
+for _ in range(N):
+    #commnd = input().split()
+    commnd = sys.stdin.readline().split()
+    if commnd[0] == 'push':
+        stack.push(commnd[1])
+    elif commnd[0] == 'pop':
+        print(stack.pop())
+    elif commnd[0] == 'size':
+        print(stack.size())
+    elif commnd[0] =='empty':
+        print(stack.empty())
+    else:
+        print(stack.top())
+
+2단계-No.10773-제로
+K = int(input())
+num_stack = []
+
+for _ in range(K):
+    num = int(input())
+    if num == 0:
+        del num_stack[-1]
+    else: 
+        num_stack.append(num)
+
+if not num_stack:
+    print(0)
+else:
+    print(sum(num_stack))
+
+3단계-No.9012-괄호
+Case = int(input())
+for _ in range(Case):
+    string = list(input())
+    close_cnt = 0
+        
+    while(len(string) != 0):
+        if(close_cnt < 0):
+            break
+        res = string.pop()
+
+        if(res == '('):
+            close_cnt -= 1
+        elif(res == ')'):
+            close_cnt += 1
+            
+    if(close_cnt == 0):
+        print('YES')
+    else:
+        print('NO')
+
+4단계-No.4949-균형잡힌 세상
+while True:
+    bracket = input()
+    if bracket == ".":
+        break
+    bracket_stack = []
+    answer = True
+    
+    for j in bracket:
+        if j == "(" or j == "[":
+            bracket_stack.append(j)
+        
+        elif j == ")":
+            if len(bracket_stack) == 0:
+                answer = False
+                break
+            if bracket_stack[-1] == "(":
+                bracket_stack.pop()
+            else:
+                answer = False
+                break
+                
+        elif j == "]":
+            if len(bracket_stack) == 0:
+                answer = False
+                break
+            if bracket_stack[-1] == "[":
+                bracket_stack.pop()
+            else:
+                answer = False
+                break
+
+    if answer and not bracket_stack:
+        print("yes")
+    else:
+        print("no")
+
+5단계-No.1874-스택 수열
+from sys import stdin
+origin=[]
+new=[]
+result=['+']
+for i in range(1,int(stdin.readline())+1):
+    origin.append(int(stdin.readline()))
+    new.append(i)
+origin.append('end')
+new.append('fin')
+new.append('dummy')
+o_p=0
+n_p=0
+while True:
+    if origin[o_p]==new[n_p]:
+        result.append('-')
+        new.pop(n_p)
+        o_p+=1
+        n_p-=1
+        if origin[o_p]=='end':break
+    else :
+        n_p += 1
+        if new[n_p]=='fin':break
+        result.append('+')
+if len(new)==2:
+    for i in result:
+        print(i)
+else:
+    print('NO')
