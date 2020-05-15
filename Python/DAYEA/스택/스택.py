@@ -4,6 +4,7 @@ N = int(input())
 stack = list()
 for i in range(N):
     cmd = input()
+    print(cmd)
     if cmd.split()[0] == 'push':
         stack.append(cmd.split()[1])
     elif cmd == 'pop':
@@ -24,3 +25,4 @@ for i in range(N):
             print('-1')
         else:
             print(stack[-1])
+
