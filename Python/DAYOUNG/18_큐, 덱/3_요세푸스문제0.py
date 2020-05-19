@@ -16,7 +16,7 @@ q = queue.Queue()
 number = list(i for i in range(n))
 
 while len(number) > 0:
-    if k < len(number):    
+    if k < len(number):
         q.get(number[k])
         del number[k]
         k += 2
