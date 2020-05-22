@@ -143,3 +143,163 @@ for i in range(1, n-k+1):
     
 B = mul(B,(p-2) % p)
 print((A * B) % p)
+
+6단계-No.2740-행렬 곱셈
+import sys
+N,M=map(int,sys.stdin.readline().split())
+A=[list(map(int,sys.stdin.readline().split())) for _ in range(N)]
+ 
+Nb,Mb=map(int,sys.stdin.readline().split())
+B=[list(map(int,sys.stdin.readline().split())) for _ in range(Nb)]
+ 
+ 
+result=[]
+tmp=0
+tmp_li=[]
+for i in range(N):#A에 1행부터 N행까지
+    for j in range(Mb):#B에 M열 까지
+        for k in range(M): #A에 열
+            tmp+=A[i][k]*B[k][j]
+        tmp_li.append(tmp)
+        tmp=0
+    result.append(tmp_li)
+    tmp_li=[]
+ 
+ 
+for li in result:
+    for p in li:
+        print(p,end=' ')
+    print()
+
+7단계-No.10830-행렬 제곱
+#행렬 곱셈 함수
+def matrix_mul(a, b):
+    result = [[0]* N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                result[i][j] += a[i][k] * b[k][j]
+    
+    for i in range(N):
+        for j in range(N):
+            result[i][j] %= 1000
+                
+    return result
+    
+    
+#2진법으로 변환하여 분할정복 실행
+N, B = map(int, input().split())
+matrix = [list(map(int, input().split())) for _ in range(N)]
+B = bin(B)[2:] #2진법으로 변환
+
+#단위 행렬
+identity_matrix = [[1 if i == j else 0 for i in range(N)] for j in range(N)]
+
+#2진법 자릿수 만큼 제곱 & 제곱한 행렬 끼리 곱해줌
+result = identity_matrix[:]
+for i in range(len(B)):
+    if B[-i-1] == '1':
+        temp = matrix[:]
+        while i != 0:
+            temp = matrix_mul(temp, temp)
+            i -= 1
+        result = matrix_mul(result, temp)
+
+for row in result:
+    print(*row)
+
+8단계-No.2749-피보나치 수-3
+#2^x 피보나치를 구해주는 함수
+def matrix_mul_self(x):
+    base = [[1, 1], [1, 0]]
+    result = [[1, 1], [1, 0]]
+    for _ in range(x):
+        result = [[0, 0], [0, 0]]
+        for i in range(2):
+            for j in range(2):
+                for k in range(2):
+                    result[i][j] += (base[i][k] * base[k][j]) % 1000000
+        base = result
+        
+    return result
+
+#2*2 두 행렬의 곱을 구해주는 함수
+def matrix_mul(a, b):
+    result = [[0 ,0], [0, 0]]
+    for i in range(2):
+        for j in range(2):
+            for k in range(2):
+                result[i][j] += (a[i][k] * b[k][j]) % 1000000
+                
+    return result
+
+n = bin(int(input()))[2:] #2진법으로 변환
+
+result = [[1, 0], [0, 1]]
+for i in range(len(n)):
+    if n[-i-1] == '1': #2^x 피보나치들만 구해준 다음 곱해줌
+        result = matrix_mul(result, matrix_mul_self(i))
+        
+print(result[0][1] % 1000000)
+
+9단계-No.6549-히스토그램에서 가장 큰 직사각형
+while True:
+    N, *l=list(map(int, input().split()))
+    l.append(0)
+    if N == 0: break
+    s=[]
+    a=0
+    for i,h in enumerate(l):
+        while s and l[s[-1]]>h:
+            ih=l[s.pop()]
+            # s의 높이!
+            w=i-s[-1]-1 if s else i
+            # i에서부터 s의 top까지의 거리를 가로길이로 한다.
+            # w = i일때는 마지막일 때
+            if a<w*ih: a=w*ih
+        s.append(i)
+    print(a)
+
+10단계-No.2261-가장 가까운 두 점
+import sys
+def dis(a,b):
+    return (b[0]-a[0])**2 + (b[1]-a[1]) ** 2
+def devi(st, en):
+    leng = en - st
+    if leng == 2:
+        return dis(s[st], s[st+1])
+    elif leng == 3:
+        return min(dis(s[st], s[st+1]), dis(s[st+1], s[st+2]), dis(s[st], s[st+2]))
+    
+    leng = (st + en) // 2
+    mid = s[leng][0]
+    d = min(devi(st,leng), devi(leng, en))
+    tmp = []
+    for i in range(st,en):
+        if (mid - s[i][0])**2 <= d:
+            tmp.append(s[i])
+    tmp.sort(key = lambda x:x[1])
+    m = d
+    tmp_len = len(tmp)
+    if tmp_len >= 2:
+        for i in range(tmp_len -1):
+            for j in range(i+1, tmp_len):
+                if (tmp[i][1] - tmp[j][1]) **2 > d:
+                    break
+                elif tmp[i][0] < mid and tmp[j][0] < mid:
+                    continue
+                elif tmp[i][0] > mid and tmp[j][0] > mid:
+                    continue
+                m = min(m, dis(tmp[i],tmp[j]))
+    return m
+    
+li = []
+for _ in range(int(input())):
+    li.append(list(map(int, sys.stdin.readline().split())))
+s = list(set(map(tuple,li)))
+if len(s) != len(li):
+    print("0")
+else:
+    s.sort()
+    d = devi(0,len(s))
+    print(d)
