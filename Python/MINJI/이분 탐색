@@ -1,0 +1,33 @@
+1단계-No.1920-수 찾기
+import sys
+
+def BinarySearch(arr, val, low, high):
+    if low > high:
+        return False
+    
+    mid = (low + high) // 2
+    if arr[mid] > val:
+        return BinarySearch(arr, val, low, mid - 1)
+    elif arr[mid] < val:
+        return BinarySearch(arr, val, mid + 1, high)
+    else:
+        return True
+
+a = int(input())
+A = list(map(int, sys.stdin.readline().split()))
+b = int(input())
+B = list(map(int, sys.stdin.readline().split()))
+
+A.sorted()
+
+for i in B:
+    if BinarySearch(A, b, 0, a - 1):
+        print(1)
+    else:
+        print(0)
+
+2단계-No.10816-숫자 카드-2
+
+3단계-No.1654-랜선 자르기
+
+4단계-No.2805-나무 자르기
